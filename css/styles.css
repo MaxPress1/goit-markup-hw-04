@@ -37,6 +37,7 @@ img {
     margin: 0 auto;
     display: flex;
     height: 72px;
+    box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);;
     
 }
 
@@ -67,14 +68,38 @@ img {
 }
 
 .menu-link {
+    display: block;
     font-weight: 500;
-    color: #2e2f42;
+    color: #2E2F42;
     line-height: 1.5;
     padding: 24px 0; 
+    position: relative;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.first-menu-link {
+    display: block;
+    font-weight: 500;
+    color: #404bbf;
+    line-height: 1.5;
+    padding: 24px 0; 
+    position: relative;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.first-menu-link::after {
+    content:'';
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 4px;
+    width: 100%;
+    border-radius: 2px;
+    background-color: rgba(64, 75, 191, 1);  
     transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 250ms;
-    transition-property: color, background-color;
-    position: relative;
+    display: block;
 }
 
 .menu-link:focus {
@@ -89,23 +114,8 @@ img {
     color: #404bbf;
 }
 
-.menu-link::after {
-    content: " ";
-    display: none;
-    position: absolute;
-    
-    height: 4px;
-    width: 48px;
-    top: 44px;
-    border-radius: 2px;
-    background-color: rgba(64, 75, 191, 1);  
-    transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 250ms;
-}
 
-.menu-link:active:after {
-    display: block;
-}
+
 .contacts {
     font-style: normal;
     padding: 24px 0;
@@ -127,8 +137,7 @@ img {
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: #434455;
-    transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 250ms;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .link:focus {
@@ -141,6 +150,7 @@ img {
 
 
 .main-title{
+    margin: auto;
     background-color: #2e2f42;
     padding: 188px 0;
     background-image: linear-gradient(
@@ -150,6 +160,9 @@ img {
       ),
       url(/images/hero.jpg);
       background-size: cover;
+      max-width: 1440px; 
+      background-repeat: no-repeat; 
+      background-position: center;
 }
 .container {
     max-width: 1158px;
@@ -188,9 +201,7 @@ img {
    margin-right: auto;
    display: block;
    border: none;
-   transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 250ms;
-    transition-property: background-color, color;
+   transition:  background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 button:focus{
@@ -205,7 +216,7 @@ button:hover{
 
 .section {
     padding-top: 120px;
-    padding-bottom: 120px;
+    padding-bottom: 120px; 
 }
 
 .visually-hidden {
@@ -250,12 +261,12 @@ button:hover{
     background-color: #F4F4FD;
     border-radius:4px;
     margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.icon-rules {
-    margin-top: 24px;
-   margin-left: 100px;
-}
+
 
 .section-content {
     font-size: 16;
@@ -292,31 +303,40 @@ button:hover{
 
 .icon-list {
     display: flex;
+    justify-self: center;
     gap:24px;
     margin-top: 8px;
-    margin-left: 16px;
-    
 }
 
 .icon {
     width: 40px;
     height: 40px;
-    background-color:#4D5AE5;
-    border-radius:50%;
    display: flex;
-   transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);
-   transition-duration: 250ms;
-   transition-property: background-color;
 }
 
-.icon:hover {
-    background-color:#404BBF;
-}
+
 
 .icon-link{
-    
-    padding-top: 12px;
-    padding-left: 12px;
+    width: 100%;
+    height: 100%;
+    background-color:#4D5AE5;
+    border-radius:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-link:hover {
+    background-color: #404bbf;
+}
+
+.icon-link:active {
+    background-color: #404bbf;
+}
+
+.icon-media {
+    fill: #f4f4fd;
 }
 
 .title {
@@ -372,8 +392,6 @@ button:hover{
     transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 250ms;
     transition-property: box-shadow;
-    position: relative;
-    overflow: hidden;
 }
 
 .item-portfolio:hover {
@@ -385,18 +403,24 @@ button:hover{
 }
 
 .overlay {
-    padding-top: 40px;
-    padding-left: 32px;
+    padding: 40px 32px;
     background-color: #4D5AE5;
-    color: #F4F4FD;
-    font-family: 'Roboto', sans-serif;
+    color: #f4f4fd;
     position:absolute;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     transform: translateY(100%);
-    transition: transform 250ms;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .overlay-wrapper {
+    position: relative;
+    overflow: hidden;
   }
 
   
@@ -468,9 +492,9 @@ button:hover{
 .link-title {
     font-size: 16px;
     font-weight: 500;
-      line-height: 1.2;
+      line-height: 1.5;
      letter-spacing: 0.02em;
-     color: #F4F4FD;
+     color: #FFFFFF;
      margin-bottom: 16px;
 }
 .link-footer {
@@ -486,39 +510,48 @@ button:hover{
     padding-left: 15px;
     padding-right: 15px;
     margin: 0 auto;  
+    align-items: baseline;
 }
 
 .icon-list-footer {
-    display: flex;
-    gap:24px;
+   display: flex;
+    justify-self: center;
+    gap:16px;
+    margin-top: 8px
     
 }
 
-.icon-link-footer{
-    
-    padding-top: 12px;
-    padding-left: 12px;
+
+.logo-wrapper {
+    margin-right: 120px;
 }
 
-.social-section {
-    margin-left: 120px;
-}
 
 .icon-footer {
     width: 40px;
     height: 40px;
+   display: flex;
+   
+}
+
+.icon-link-footer{
+    width: 100%;
+    height: 100%;
     background-color:#4D5AE5;
     border-radius:50%;
-   display: flex;
-   transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);
-   transition-duration: 250ms;
-   transition-property: background-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.icon-footer:hover {
-    background-color:#31D0AA;
+.icon-link-footer:hover {
+    background-color: #31D0AA;
 }
 
+.icon-link-footer:focus {
+    background-color: #31D0AA;
+}
 *,
 ::before,
 ::after {
