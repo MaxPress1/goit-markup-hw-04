@@ -234,8 +234,6 @@ button:hover{
 .list-rules {
     display: flex;
     align-items: center;
-    width: 1128px;
-    height: 104px;
     gap: 24px;
 }
 
